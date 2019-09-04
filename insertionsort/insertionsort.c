@@ -64,38 +64,57 @@ int * insertionsort (int * v, int n){
 }
 
 int main() {
-    int i;
+    int i, tamanho, * v = NULL;
+    double start;
+    FILE * file = NULL;
+    srand(time(NULL));
 
-    // FILE * file = fopen("desordenado.csv", "w");
-    FILE * file = fopen("ordenado.csv", "w");
-    // FILE * file = fopen("ordenadoInversamente.csv", "w");
 
+    // 1: melhor caso --> ordenado
+    printf("1 caso: ordenado...\n");
+    file = fopen("ordenado.csv", "w");
     if (file == NULL) {
         printf("\n >>> Erro ao criar arquivo!");
         return 0;
     }
-
-    double start, stop, elapsed;
-    srand(time(NULL));
-
-    int tamanho = 10000, * v;
     fprintf(file, "tamanho,tempo\n");
-
-
-    for (i = 1; i <= 8; i++, tamanho+=20000) { // repetir 5 vezes
-        
-        // v = gerarVetorDesordenado(tamanho);
+    for (tamanho = 10000, i = 1; i <= 8; i++, tamanho+=20000) {
         v = gerarVetorOrdenado(tamanho);
-        // v = gerarVetorOrdenadoInversamente(tamanho);
-        
         start = tempo();
-
         v = insertionsort(v, tamanho);
-
         fprintf(file, "%d,%f\n", tamanho, (tempo() - start));
     }
-
     fclose(file);
+
+
+    // 2: caso intermediário --> desordenado
+    printf("2 caso: desordenado...\n");
+    file = fopen("desordenado.csv", "w");
+    if (file == NULL) {
+        printf("\n >>> Erro ao criar arquivo!");
+        return 0;
+    }
+    fprintf(file, "tamanho,tempo\n");
+    for (tamanho = 10000, i = 1; i <= 8; i++, tamanho+=20000) {
+        v = gerarVetorDesordenado(tamanho);
+        start = tempo();
+        v = insertionsort(v, tamanho);
+        fprintf(file, "%d,%f\n", tamanho, (tempo() - start));
+    }
+    fclose(file);
+
+
+    // 3: caso pior caso --> inversamente ordenado
+    printf("3 caso: inversamente ordenado...\n");
+    file = fopen("ordenadoInversamente.csv", "w");
+    for (tamanho = 10000, i = 1; i <= 8; i++, tamanho+=20000) {
+        v = gerarVetorOrdenadoInversamente(tamanho);
+        start = tempo();
+        v = insertionsort(v, tamanho);
+        fprintf(file, "%d,%f\n", tamanho, (tempo() - start));
+    }
+    fclose(file);
+
 
     return 0;
 }
