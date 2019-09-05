@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#define incremento 20000
+#define tamanho_inicial 10000
 
 // retorna quanto tempo se foi desde que o programa foi inicializado
 double tempo(){
@@ -78,7 +80,7 @@ int main() {
         return 0;
     }
     fprintf(file, "tamanho,tempo\n");
-    for (tamanho = 10000, i = 1; i <= 8; i++, tamanho+=20000) {
+    for (tamanho = tamanho_inicial, i = 1; i <= 8; i++, tamanho+=incremento) {
         v = gerarVetorOrdenado(tamanho);
         start = tempo();
         v = insertionsort(v, tamanho);
@@ -95,7 +97,7 @@ int main() {
         return 0;
     }
     fprintf(file, "tamanho,tempo\n");
-    for (tamanho = 10000, i = 1; i <= 8; i++, tamanho+=20000) {
+    for (tamanho = tamanho_inicial, i = 1; i <= 8; i++, tamanho+=incremento) {
         v = gerarVetorDesordenado(tamanho);
         start = tempo();
         v = insertionsort(v, tamanho);
@@ -107,7 +109,12 @@ int main() {
     // 3: caso pior caso --> inversamente ordenado
     printf("3 caso: inversamente ordenado...\n");
     file = fopen("ordenadoInversamente.csv", "w");
-    for (tamanho = 10000, i = 1; i <= 8; i++, tamanho+=20000) {
+    if (file == NULL) {
+        printf("\n >>> Erro ao criar arquivo!");
+        return 0;
+    }
+    fprintf(file, "tamanho,tempo\n");
+    for (tamanho = tamanho_inicial, i = 1; i <= 8; i++, tamanho+=incremento) {
         v = gerarVetorOrdenadoInversamente(tamanho);
         start = tempo();
         v = insertionsort(v, tamanho);
