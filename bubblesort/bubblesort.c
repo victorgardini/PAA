@@ -53,7 +53,7 @@ int * gerarVetorOrdenadoInversamente(int tamanho) {
 int * bubbleSort (int * v, int n){
     int i, j, aux;
     for (i = 0; i < n; i++) {
-        for (j = n-1; j >= i+1; j--) {
+        for (j = n-1; j > i; j--) {
             if (v[j] < v[j-1]) {
                 aux = v[j-1];
                 v[j-1] = v[j];
