@@ -50,18 +50,25 @@ int * gerarVetorOrdenadoInversamente(int tamanho) {
 }
 
 // Método de ordenação por inserção, v = vetor a ser ordenado, n = tamanho do vetor
-int * selectsort (int * v, int n){
-    int i, j, min, aux;
-    for (i = 0; i < n-1; i++){
-        min = i;
-        for (j = i+1; j < n; j++) {
-            if (v[j] < v[min]) {
-                aux = v[min];
-                v[min] = v[j];
-                v[j] = aux;
-            }
-        }
-    }
+int * selecao (int * v, int n){
+    int i, j, menor, ind, troca;
+	for(i = 0; i < n - 1; i++) {
+		menor = v[i];
+		ind = i;
+		troca = 0;
+		
+		for(j = i + 1; j < n; j++)
+			if(v[j] < menor) {
+				menor = v[j];
+				ind = j;
+				troca = 1;
+			}
+		
+		if(troca) {
+			v[ind] = v[i];
+			v[i] = menor;
+		}
+	}
     return v;
 }
 
@@ -72,7 +79,7 @@ int * selectsort (int * v, int n){
         printf("%6d", v[i]);
 
     printf("\n\n\n");    
-    v = selectsort(v, 5);
+    v = selecao(v, 5);
 
     for (i = 0; i < 5; i++)
         printf("%6d", v[i]);
@@ -99,7 +106,7 @@ int main() {
     for (tamanho = tamanho_inicial, i = 1; i <= 8; i++, tamanho+=incremento) {
         v = gerarVetorOrdenado(tamanho);
         start = tempo();
-        v = selectsort(v, tamanho);
+        v = selecao(v, tamanho);
         fprintf(file, "%d,%f\n", tamanho, (tempo() - start));
     }
     fclose(file);
@@ -116,7 +123,7 @@ int main() {
     for (tamanho = tamanho_inicial, i = 1; i <= 8; i++, tamanho+=incremento) {
         v = gerarVetorDesordenado(tamanho);
         start = tempo();
-        v = selectsort(v, tamanho);
+        v = selecao(v, tamanho);
         fprintf(file, "%d,%f\n", tamanho, (tempo() - start));
     }
     fclose(file);
@@ -133,7 +140,7 @@ int main() {
     for (tamanho = tamanho_inicial, i = 1; i <= 8; i++, tamanho+=incremento) {
         v = gerarVetorOrdenadoInversamente(tamanho);
         start = tempo();
-        v = selectsort(v, tamanho);
+        v = selecao(v, tamanho);
         fprintf(file, "%d,%f\n", tamanho, (tempo() - start));
     }
     fclose(file);
