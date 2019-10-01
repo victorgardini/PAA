@@ -12,8 +12,8 @@ data  = pd.read_csv('melhor_caso-g.csv')
 plt.plot(data['x'], data['y'], label='c.g(n)', color='red')
 
 # tn
-data = pd.read_csv('melhor_caso-tn-nanosegundos.csv')
-plt.plot(data['x'], data['y'], label='T(n) em nanosegundos', color='blue')
+#data = pd.read_csv('melhor_caso-tn-nanosegundos.csv')
+#plt.plot(data['x'], data['y'], label='T(n) em nanosegundos', color='blue')
 
 plt.title('Melhor caso: f(n) e g(n)')
 plt.xlabel('Tamanho do vetor (elementos)')
