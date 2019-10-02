@@ -22,7 +22,7 @@ plt.ylabel('Tempo ordenação (segundos)')
 #plt.ylim(ymin=-1)
 plt.xlim(xmin=10000)
 plt.legend()
-plt.grid(True)
+plt.grid(color='grey', linestyle=':')
 plt.savefig('GraficoTn.png')
 
 

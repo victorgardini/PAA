@@ -17,7 +17,7 @@ plt.ylabel('Quantidade de passos (pontos)')
 plt.ylim(ymin=-1)
 plt.xlim(xmin=10000)
 plt.legend()
-plt.grid(True)
+plt.grid(color='grey', linestyle=':')
 plt.savefig('GraficoPiorCasoFnGn.png')
 
 
