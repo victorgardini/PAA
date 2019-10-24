@@ -5,7 +5,7 @@ import pandas as pd
 
 # (melhor caso)
 data  = pd.read_csv('melhor_caso-f.csv')
-plt.plot(data['x'], data['y'], label='f(n)', color='green')
+plt.plot(data['x'], data['y'], label='f(n)', color='green', linestyle='--')
 
 # ordenado inversamente (pior caso)
 data  = pd.read_csv('melhor_caso-g.csv')
@@ -21,7 +21,7 @@ plt.ylabel('Quantidade de passos (pontos)')
 #plt.ylim(ymin=-1)
 plt.xlim(xmin=10000)
 plt.legend()
-plt.grid(True)
+plt.grid(color='grey', linestyle=':')
 plt.savefig('GraficoMelhorCasoFnGn.png')
 
 
