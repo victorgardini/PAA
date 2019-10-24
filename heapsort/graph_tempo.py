@@ -16,7 +16,7 @@ data = pd.read_csv('desordenado.csv')
 plt.plot(tamanho, data['tempo'], label='Desordenado', color='blue', linestyle=':')
 
 
-plt.title('Ordenar um vetor pelo algoritmo QuickSort')
+plt.title('Ordenar um vetor pelo algoritmo Heap Sort')
 plt.xlabel('Tamanho do vetor (elementos)')
 plt.ylabel('Tempo ordenação (segundos)')
 #plt.ylim(ymin=-1)

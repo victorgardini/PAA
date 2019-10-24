@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#define incremento 100000
-#define tamanho_inicial 100000
+#define incremento 20000
+#define tamanho_inicial 10000
 
 // retorna quanto tempo se foi desde que o programa foi inicializado
 double tempo(){
